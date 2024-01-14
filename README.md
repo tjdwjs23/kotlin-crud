@@ -1,24 +1,4 @@
-# Kotlin Spring Boot CRUD 프로젝트
-
-## 개요
-이 프로젝트는 Kotlin 및 Spring Boot를 사용하여 개발된 간단한 CRUD (Create, Read, Update, Delete) RESTful API입니다.
-
-## 기술 스택
-- Kotlin
-- Spring Boot
-- Spring Data JPA
-- ModelMapper
-- HikariCP (Connection Pooling)
-- Querydsl
-- Coroutines (Asynchronous Programming)
-- Mustache (Template Engine)
-- Spring Security
-- Log4jdbc-Log4j2 (JDBC Logging)
-- MariaDB (Database)
-
-## 프로젝트 구조
-```plaintext
-src
+<hr><h1>Kotlin Spring Boot CRUD 프로젝트</h1><h2>Overview</h2><p>This project is a simple CRUD (Create, Read, Update, Delete) RESTful API developed using Kotlin and Spring Boot.</p><h2>Tech Stack</h2><ul><li>Kotlin</li><li>Spring Boot</li><li>Spring Data JPA</li><li>ModelMapper</li><li>HikariCP (Connection Pooling)</li><li>Querydsl</li><li>Coroutines (Asynchronous Programming)</li><li>Mustache (Template Engine)</li><li>Spring Security</li><li>Log4jdbc-Log4j2 (JDBC Logging)</li><li>MariaDB (Database)</li></ul><h2>Project Structure</h2><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>arduino</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-arduino">src
 ├── main
 │   ├── kotlin.demo.kotlin.crud
 │   │   ├── config
@@ -36,70 +16,26 @@ src
 │   └── resources
 │       ├── application.yml
 │       └── templates
-│           └── (Mustache template files)
+│           └── (Mustache <span class="hljs-keyword">template</span> files)
 └── test
     └── kotlin.demo.kotlin.crud
         ├── controller
         │   └── BoardControllerTest.kt
         └── service
             └── BoardServiceTest.kt
-```
-
-빌드 및 실행
-프로젝트를 빌드하려면 다음 명령어를 실행하세요:
-
-bash
-Copy code
-./gradlew build
-빌드가 완료되면 Spring Boot 애플리케이션을 다음과 같이 실행하세요:
-
-bash
-Copy code
-./gradlew bootRun
-애플리케이션이 실행되면 http://localhost:8080에서 API에 액세스할 수 있습니다.
-
-API 엔드포인트
-게시글 추가
-
-POST /board
-요청 바디: BoardFormDto
-json
-Copy code
-{
-  "writer": "John Doe",
-  "password": "password123",
-  "title": "Sample Title",
-  "content": "This is a sample content for testing."
-}
-게시글 읽기
-
-GET /board/{id}
-게시글 삭제
-
-DELETE /board/{id}
-게시글 수정
-
-PUT /board/{id}
-요청 바디: BoardFormDto
-json
-Copy code
-{
-  "writer": "Updated Writer",
-  "password": "updatedPassword",
-  "title": "Updated Title",
-  "content": "This is an updated content."
-}
-게시글 목록
-
-GET /board/list
-테스트
-프로젝트의 유닛 테스트는 BoardControllerTest 및 BoardServiceTest에서 구현되었습니다. 다음 명령어로 테스트를 실행하세요:
-
-bash
-Copy code
-./gradlew test
-주의사항
-이 프로젝트는 단순한 예제입니다. 실제 상황에서는 보안, 예외 처리, 로깅 및 트랜잭션 관리와 같은 추가 고려 사항이 필요합니다.
-데이터베이스 연결 정보 및 기타 환경 설정은 application.yml 파일에서 관리됩니다.
-라이선스
-이 소스 코드는 MIT 라이선스에 따라 배포됩니다. 자세한 내용은 LICENSE 파일을 참조하세요.
+</code></div></div></pre><h2>Build and Run</h2><p>To build the project, run the following command:</p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">./gradlew build
+</code></div></div></pre><p>After building, run the Spring Boot application with:</p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">./gradlew bootRun
+</code></div></div></pre><p>Once the application is running, you can access the API at <a target="_new" href="http://localhost:8080">http://localhost:8080</a>.</p><h2>API Endpoints</h2><ul><li><p><strong>Add Post</strong></p><ul><li><code>POST /board</code></li><li>Request Body: BoardFormDto</li></ul><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>json</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"writer"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"John Doe"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"password"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"password123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sample Title"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"This is a sample content for testing."</span>
+<span class="hljs-punctuation">}</span>
+</code></div></div></pre></li><li><p><strong>Read Post</strong></p><ul><li><code>GET /board/{id}</code></li></ul></li><li><p><strong>Delete Post</strong></p><ul><li><code>DELETE /board/{id}</code></li></ul></li><li><p><strong>Update Post</strong></p><ul><li><code>PUT /board/{id}</code></li><li>Request Body: BoardFormDto</li></ul><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>json</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"writer"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Updated Writer"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"password"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"updatedPassword"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Updated Title"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"This is an updated content."</span>
+<span class="hljs-punctuation">}</span>
+</code></div></div></pre></li><li><p><strong>List Posts</strong></p><ul><li><code>GET /board/list</code></li></ul></li></ul><h2>Tests</h2><p>Unit tests for the project are implemented in <code>BoardControllerTest</code> and <code>BoardServiceTest</code>. Run the tests with:</p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">./gradlew <span class="hljs-built_in">test</span>
+</code></div></div></pre><h2>Notes</h2><ul><li>This project is a simple example. In a real-world scenario, additional considerations such as security, exception handling, logging, and transaction management should be taken into account.</li><li>Database connection information and other environment settings are managed in the <code>application.yml</code> file.</li></ul><h2>License</h2><p>This source code is distributed under the MIT License. See the <a target="_new">LICENSE</a> file for details.</p><hr><p>이와 같은 형식으로 작성하면 Markdown 문법에 따라 제대로 표현될 것입니다.</p></div>
