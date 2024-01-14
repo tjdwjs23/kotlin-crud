@@ -17,23 +17,18 @@ class BoardService @Autowired constructor(
 ) {
 
     init {
-        // ModelMapper 설정
         modelMapper.configuration.isSkipNullEnabled = true
     }
 
     @Transactional
-    suspend fun save(boardFormDto: BoardFormDto): Long {
-        return coroutineScope {
-            val board = modelMapper.map(boardFormDto, Board::class.java)
-            val savedBoard = async { boardRepository.save(board) }
-            savedBoard.await().id ?: throw IllegalStateException("Board ID should not be null after save.")
-        }
+    suspend fun save(boardFormDto: BoardFormDto): Long = coroutineScope {
+        val board = modelMapper.map(boardFormDto, Board::class.java)
+        val savedBoard = async { boardRepository.save(board) }
+        savedBoard.await().id ?: throw IllegalStateException("Board ID should not be null after save.")
     }
 
-    suspend fun getPost(id: Long): Board? {
-        return coroutineScope {
-            async { boardRepository.findById(id).orElse(null) }.await()
-        }
+    suspend fun getPost(id: Long): Board? = coroutineScope {
+        async { boardRepository.findById(id).orElse(null) }.await()
     }
 
     suspend fun deletePost(id: Long) {
@@ -43,19 +38,14 @@ class BoardService @Autowired constructor(
     }
 
     @Transactional
-    suspend fun updatePost(id: Long, boardFormDto: BoardFormDto): Board {
-        return coroutineScope {
-            val post = async { boardRepository.findById(id).orElseThrow { EntityNotFoundException("Post not found with ID: $id") } }.await()
-            post.updatePost(boardFormDto)
-            val savedPost = async { boardRepository.save(post) }
-            savedPost.await()
-        }
+    suspend fun updatePost(id: Long, boardFormDto: BoardFormDto): Board = coroutineScope {
+        val post = async { boardRepository.findById(id).orElseThrow { EntityNotFoundException("Post not found with ID: $id") } }.await()
+        post.updatePost(boardFormDto)
+        async { boardRepository.save(post) }.await()
     }
 
-    suspend fun getPostList(): List<Board> {
-        return coroutineScope {
-            async { boardRepository.findAll() }.await()
-        }
+    suspend fun getPostList(): List<Board> = coroutineScope {
+        async { boardRepository.findAll() }.await()
     }
 }
 
