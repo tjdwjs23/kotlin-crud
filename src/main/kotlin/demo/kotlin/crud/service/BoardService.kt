@@ -3,6 +3,7 @@ package demo.kotlin.crud.service
 import demo.kotlin.crud.dto.Board
 import demo.kotlin.crud.dto.BoardFormDto
 import demo.kotlin.crud.repository.BoardRepository
+import kotlinx.coroutines.*
 import org.modelmapper.ModelMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -21,33 +22,40 @@ class BoardService @Autowired constructor(
     }
 
     @Transactional
-    fun save(boardFormDto: BoardFormDto): Long {
-        val board = modelMapper.map(boardFormDto, Board::class.java)
-        val savedBoard = boardRepository.save(board)
-        return savedBoard.id ?: throw IllegalStateException("Board ID should not be null after save.")
+    suspend fun save(boardFormDto: BoardFormDto): Long {
+        return coroutineScope {
+            val board = modelMapper.map(boardFormDto, Board::class.java)
+            val savedBoard = async { boardRepository.save(board) }
+            savedBoard.await().id ?: throw IllegalStateException("Board ID should not be null after save.")
+        }
     }
 
-    fun getPost(id: Long): Board? {
-        return boardRepository.findById(id).orElse(null)
+    suspend fun getPost(id: Long): Board? {
+        return coroutineScope {
+            async { boardRepository.findById(id).orElse(null) }.await()
+        }
     }
 
-    fun deletePost(id: Long) {
-        boardRepository.deleteById(id)
+    suspend fun deletePost(id: Long) {
+        coroutineScope {
+            async { boardRepository.deleteById(id) }.await()
+        }
     }
 
     @Transactional
-    fun updatePost(id: Long, boardFormDto: BoardFormDto): Board {
-        val post = boardRepository.findById(id).orElseThrow { EntityNotFoundException("Post not found with ID: $id") }
-        post.updatePost(boardFormDto)
-        return saveUpdatedPost(post)
+    suspend fun updatePost(id: Long, boardFormDto: BoardFormDto): Board {
+        return coroutineScope {
+            val post = async { boardRepository.findById(id).orElseThrow { EntityNotFoundException("Post not found with ID: $id") } }.await()
+            post.updatePost(boardFormDto)
+            val savedPost = async { boardRepository.save(post) }
+            savedPost.await()
+        }
     }
 
-    private fun saveUpdatedPost(post: Board): Board {
-        return boardRepository.save(post)
+    suspend fun getPostList(): List<Board> {
+        return coroutineScope {
+            async { boardRepository.findAll() }.await()
+        }
     }
-
-    fun getPostList(): List<Board> {
-        return boardRepository.findAll()
-    }
-
 }
+
