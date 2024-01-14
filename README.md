@@ -1,22 +1,23 @@
-Kotlin Spring Boot CRUD 프로젝트
-Overview
-This project is a simple CRUD (Create, Read, Update, Delete) RESTful API developed using Kotlin and Spring Boot.
+# Kotlin Spring Boot CRUD 프로젝트
 
-Tech Stack
-Kotlin
-Spring Boot
-Spring Data JPA
-ModelMapper
-HikariCP (Connection Pooling)
-Querydsl
-Coroutines (Asynchronous Programming)
-Mustache (Template Engine)
-Spring Security
-Log4jdbc-Log4j2 (JDBC Logging)
-MariaDB (Database)
-Project Structure
-arduino
-Copy code
+## 개요
+이 프로젝트는 Kotlin 및 Spring Boot를 사용하여 개발된 간단한 CRUD (Create, Read, Update, Delete) RESTful API입니다.
+
+## 기술 스택
+- Kotlin
+- Spring Boot
+- Spring Data JPA
+- ModelMapper
+- HikariCP (Connection Pooling)
+- Querydsl
+- Coroutines (Asynchronous Programming)
+- Mustache (Template Engine)
+- Spring Security
+- Log4jdbc-Log4j2 (JDBC Logging)
+- MariaDB (Database)
+
+## 프로젝트 구조
+```plaintext
 src
 ├── main
 │   ├── kotlin.demo.kotlin.crud
@@ -42,24 +43,26 @@ src
         │   └── BoardControllerTest.kt
         └── service
             └── BoardServiceTest.kt
-Build and Run
-To build the project, run the following command:
+```
+
+빌드 및 실행
+프로젝트를 빌드하려면 다음 명령어를 실행하세요:
 
 bash
 Copy code
 ./gradlew build
-After building, run the Spring Boot application with:
+빌드가 완료되면 Spring Boot 애플리케이션을 다음과 같이 실행하세요:
 
 bash
 Copy code
 ./gradlew bootRun
-Once the application is running, you can access the API at http://localhost:8080.
+애플리케이션이 실행되면 http://localhost:8080에서 API에 액세스할 수 있습니다.
 
-API Endpoints
-Add Post
+API 엔드포인트
+게시글 추가
 
 POST /board
-Request Body: BoardFormDto
+요청 바디: BoardFormDto
 json
 Copy code
 {
@@ -68,16 +71,16 @@ Copy code
   "title": "Sample Title",
   "content": "This is a sample content for testing."
 }
-Read Post
+게시글 읽기
 
 GET /board/{id}
-Delete Post
+게시글 삭제
 
 DELETE /board/{id}
-Update Post
+게시글 수정
 
 PUT /board/{id}
-Request Body: BoardFormDto
+요청 바디: BoardFormDto
 json
 Copy code
 {
@@ -86,17 +89,17 @@ Copy code
   "title": "Updated Title",
   "content": "This is an updated content."
 }
-List Posts
+게시글 목록
 
 GET /board/list
-Tests
-Unit tests for the project are implemented in BoardControllerTest and BoardServiceTest. Run the tests with:
+테스트
+프로젝트의 유닛 테스트는 BoardControllerTest 및 BoardServiceTest에서 구현되었습니다. 다음 명령어로 테스트를 실행하세요:
 
 bash
 Copy code
 ./gradlew test
-Notes
-This project is a simple example. In a real-world scenario, additional considerations such as security, exception handling, logging, and transaction management should be taken into account.
-Database connection information and other environment settings are managed in the application.yml file.
-License
-This source code is distributed under the MIT License. See the LICENSE file for details.
+주의사항
+이 프로젝트는 단순한 예제입니다. 실제 상황에서는 보안, 예외 처리, 로깅 및 트랜잭션 관리와 같은 추가 고려 사항이 필요합니다.
+데이터베이스 연결 정보 및 기타 환경 설정은 application.yml 파일에서 관리됩니다.
+라이선스
+이 소스 코드는 MIT 라이선스에 따라 배포됩니다. 자세한 내용은 LICENSE 파일을 참조하세요.
